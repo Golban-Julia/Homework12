@@ -12,26 +12,17 @@
 // .then / .catch
 // async / await + try...catch
 
-let promise = new Promise(function (resolve, rejected) {
+let promise = new Promise(function (resolve, reject) {
     setTimeout(() => {
-        resolve([
-            {
-                name: "Oleg",
-                age: 27,
-            },
-            {
-                name: "July",
-                age: 30,
-            },
-        ]);
-        rejected(new Error("Error"));
+        resolve("done");
+        reject(new Error("Error"));
     },5000);
 })
 
 // .then/.catch
 promise
-    .then((result) => console.log("done"))
-    .catch((err) => console.error("error"))
+    .then((result) => console.log(result))
+    .catch((err) => console.error(err))
     .finally(() => console.log("Promise was finished!"));
 
 
@@ -39,7 +30,7 @@ promise
 async function getpromise() {
     try {
         const result = await promise;
-        console.log("done");
+        console.log(result);
     } catch (err) {
         console.error(err);
     } finally {
